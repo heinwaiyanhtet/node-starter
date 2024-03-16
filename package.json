@@ -1,6 +1,10 @@
 {
   "dependencies": {
+    "express": "^4.18.3",
     "formidable": "^3.5.1",
+    "inversify": "^6.0.2",
+    "mongoose": "^8.2.2",
+    "reflect-metadata": "^0.2.1",
     "yargs": "^17.1.1-candidate.0"
   }
 }
