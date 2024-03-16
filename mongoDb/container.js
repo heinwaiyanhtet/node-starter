@@ -1,4 +1,5 @@
 const { Container } = require('inversify');
+
 const BlogRepository = require('./repositories/blogRepository');
 const BlogService = require('./services/blogService');
 
