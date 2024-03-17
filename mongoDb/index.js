@@ -15,9 +15,8 @@ async function displayAllBlogs() {
 }
 
 async function run() {
-  // await connectToDatabase();
+  await connectToDatabase();
   // await displayAllBlogs();
-  console.log("hello");
 }
 
 run();

@@ -1,17 +1,41 @@
-const mongoose = require('mongoose');
+require('dotenv').config();
 
-async function connectToDatabase() {
-  try {
-    await mongoose.createConnection('mongodb+srv://heinwaiyanhtet2020:BiWbBUJ8gQmyZMP4@testmonogo.bifhw7j.mongodb.net/?retryWrites=true&w=majority&appName=testMonogo', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log('Connected to MongoDB');
-  } catch (error) {
-    console.error('Failed to connect to MongoDB', error);
+
+
+console.log();
+
+const { MongoClient, ServerApiVersion } = require('mongodb');
+
+const uri = process.env.MONGODB_URL;
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
   }
+});
+
+async function run() {
+  try {
+    // Connect the client to the server	(optional starting in v4.7)
+    await client.connect();
+    // Send a ping to confirm a successful connection
+    await client.db("admin").command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+  }
+  catch(e){
+    console.log("problem got");
+  }
+  // finally {
+  //   // Ensures that the client will close when you finish/error
+  //   await client.close();
+  // }
 }
 
-module.exports = connectToDatabase;
+run()
+  .catch(console.dir);
+
+module.exports = run;
 
 
